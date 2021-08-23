@@ -46,7 +46,7 @@ function Header() {
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         <Link to={checkIsUserLoggedIn() ? "/search" : "/"} className="nav-link">
-                            Calorie Calculator
+                            YOU ARE WHAT YOU EAT
                         </Link>
                     </Typography>
                     {context.state.isAuth ? (
