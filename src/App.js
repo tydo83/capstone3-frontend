@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#00a000",
+      main: "#2E2E76",
       contrastText: "#fff",
     },
     secondary: {

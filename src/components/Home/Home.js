@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import mainImage from '../../images/app_main_image.jpeg'
+import mainImage from '../../images/app_main_image.jpg'
 import SearchResult from "../SearchResult/SearchResult";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -33,16 +33,15 @@ export default function Home() {
 
     return (
         <div className={classes.root}>
-            <br />
-            <Grid container spacing={1}>
+
                 <Grid
-                    item xs={6}
+                    item xs={12}
                     container
                     direction="row"
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <img src={mainImage} style={{ width: 500 }} />
+                    <img src={mainImage} style={{ height: "50%"}} />
                 </Grid>
                 <Grid
                     item xs={6}
@@ -54,7 +53,7 @@ export default function Home() {
                     <input type="text" onChange={(e) => setInputState(e.target.value)} />
                     <button onClick={searchHandler}> Search </button>
                 </Grid>
-                <Grid item xs={12}
+                <Grid item xs={6}
                     container
                     direction="row"
                     justifyContent="center"
@@ -67,7 +66,6 @@ export default function Home() {
                             searchResult.hints.map(item => <SearchResult item={item} />)
                     }
                 </Grid>
-            </Grid>
         </div>
     )
 }

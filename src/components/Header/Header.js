@@ -7,6 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 import "./Header.css";
 import { checkIsUserLoggedIn }from '../../lib/helpers'
 import jwtDecode from 'jwt-decode'
+import { blue } from "@material-ui/core/colors";
 
 let history = createBrowserHistory();
 
@@ -41,7 +42,7 @@ function Header() {
     
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar className={classes.color} position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         <Link to={checkIsUserLoggedIn() ? "/search" : "/"} className="nav-link">
