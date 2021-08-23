@@ -17,7 +17,7 @@ function MainRouter(props) {
                     <Route exact path="/sign-up" component={SignUp} />
                     <Route path="/" component={Home} />
                 </Switch>
-                <Footer />
+                {/* <Footer /> */}
             </AuthContextComponent>
     )
 }

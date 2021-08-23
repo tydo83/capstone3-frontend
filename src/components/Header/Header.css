@@ -1,8 +1,8 @@
-.header-link {
+.nav-link {
     text-decoration: none;
     color: white;
 }
 
-.active-header-link {
+.active-nav-link {
     border-bottom: 1px solid white;
 }

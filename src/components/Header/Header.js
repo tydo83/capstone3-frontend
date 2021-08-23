@@ -45,10 +45,9 @@ function Header() {
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         <Link to={checkIsUserLoggedIn() ? "/search" : "/"} className="nav-link">
-                            Covid19 Tracker
+                            Calorie Calculator
                         </Link>
                     </Typography>
-                    {console.log(context.state)}
                     {context.state.isAuth ? (
                         <>
                             <NavLink
@@ -59,6 +58,7 @@ function Header() {
                             >
                             <Button color="inherit">{context.state.user}</Button>
                             </NavLink>
+                            <Button style={{color:"white"}}>Memo</Button>
                             <NavLink
                                 to="/login"
                                 exact

@@ -9,7 +9,7 @@ import MainRouter from './MainRouter'
 import Spinner from './components/Spinner/Spinner'
 import jwtDecode from 'jwt-decode'
 
-// import useInputHooks from './components/hooks/useInputHooks'
+import useInputHooks from './hooks/useInputHooks'
 
 //toastify 
 import { ToastContainer } from 'react-toastify';
