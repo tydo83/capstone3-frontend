@@ -18,7 +18,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+                CODEMONKEY TD
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -31,10 +31,10 @@ function Footer() {
     return (
         <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-            Footer
+            WYE
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-            Something here to give the footer a purpose!
+            Code Immersive Capstone #3
         </Typography>
         <Copyright />
         </footer>

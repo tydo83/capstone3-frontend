@@ -1,0 +1,11 @@
+.cart-table {
+    width: 50%;
+    margin: auto;
+    border: 2px solid black;
+}
+.cart-table th {
+    border-bottom: 3px solid black;
+}
+.cart-table td {
+    border-bottom: 1px dashed slategray;
+}
