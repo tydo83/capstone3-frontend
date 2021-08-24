@@ -146,6 +146,7 @@ export default function Album() {
     }
 
     const resetHandler = () => {
+        setInputState(null)
         setSearchResult(null)
         cartDispatch({
             type: "RESET",        
