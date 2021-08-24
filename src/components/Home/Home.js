@@ -102,13 +102,13 @@ const cartReducer = (state, action) => {
             let removeCart = state.filter(e => (e.FoodName === action.data) ? false : true)
             return removeCart
 
+        case "RESET":
+            return []
+
         default:
             console.log('!@-------Cart Reducer is Broken-------@!');
     }
 }
-
-
-
 
 export default function Album() {
     const classes = useStyles();
@@ -118,12 +118,22 @@ export default function Album() {
 
     const [cartState, cartDispatch] = useReducer(cartReducer, [])
 
-    // Total
+    // Total Cal
     const [totalCalState, setTotalCalState] = useState(0)
     const [totalCarbState, setTotalCarbState] = useState(0)
     const [totalProState, setTotalProState] = useState(0)
     const [totalFatState, setTotalFatState] = useState(0)
 
+    useEffect(() => {
+        let totalCalorie = cartState.reduce(((acc, e) => acc + e.Calorie * e.quantity), 0)
+        setTotalCalState(totalCalorie)
+        let totalCarb = cartState.reduce(((acc, e) => acc + e.Carb * e.quantity), 0)
+        setTotalCarbState(totalCarb)
+        let totalProtein = cartState.reduce(((acc, e) => acc + e.Protein * e.quantity), 0)
+        setTotalProState(totalProtein)
+        let totalFat = cartState.reduce(((acc, e) => acc + e.Fat * e.quantity), 0)
+        setTotalFatState(totalFat)
+    }, [cartState])
 
     const searchHandler = async () => {
         try {
@@ -137,46 +147,13 @@ export default function Album() {
 
     const resetHandler = () => {
         setSearchResult(null)
-    }
-
-    useEffect(() => {
-        let totalCalorie = cartState.reduce(((acc, e) => acc + e.Calorie * e.quantity), 0)
-        setTotalCalState(totalCalorie)
-        let totalCarb = cartState.reduce(((acc, e) => acc + e.Carb * e.quantity), 0)
-        setTotalCarbState(totalCarb)
-        let totalProtein = cartState.reduce(((acc, e) => acc + e.Protein * e.quantity), 0)
-        setTotalProState(totalProtein)
-        let totalFat = cartState.reduce(((acc, e) => acc + e.Fat * e.quantity), 0)
-        setTotalFatState(totalFat)
-    }, [cartState])
-
+        cartDispatch({
+            type: "RESET",        
+        })}
 
     return (
         <React.Fragment>
             <CssBaseline />
-            <MemoCart
-                cart={cartState}
-                totalCalorie={totalCalState}
-                totalCarb={totalCarbState}
-                totalProtein={totalProState}
-                totalFat={totalFatState}
-                className="memo-card-div"
-                removeFromCart={(name) => cartDispatch({
-                    type: "DELETE",
-                    data: name
-                })}
-                updateQty={(name, quantity) => cartDispatch({
-                    type: "UPDATE_QTY",
-                    data: {
-                        name: name,
-                        quantity: quantity
-                    }
-                })}
-            />
-
-
-
-
             <main>
                 {/* Hero unit */}
                 <div className={classes.heroContent}>
@@ -216,6 +193,31 @@ export default function Album() {
                         </div>
                     </Container>
                 </div>
+                {
+                    cartState.length === 0 ?
+                        null
+                        :
+                        <MemoCart
+                            cart={cartState}
+                            totalCalorie={totalCalState}
+                            totalCarb={totalCarbState}
+                            totalProtein={totalProState}
+                            totalFat={totalFatState}
+                            className="memo-card-div"
+                            removeFromCart={(name) => cartDispatch({
+                                type: "DELETE",
+                                data: name
+                            })}
+                            updateQty={(name, quantity) => cartDispatch({
+                                type: "UPDATE_QTY",
+                                data: {
+                                    name: name,
+                                    quantity: quantity
+                                }
+                            })}
+                        />
+                }
+
                 <Container className={classes.cardGrid} maxWidth="md">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
@@ -247,7 +249,7 @@ export default function Album() {
                                                     data: card.food
                                                 })}
                                             >
-                                                ADD TO MEMO
+                                                ADD TO CALCULATOR
                                             </Button>
                                         </CardActions>
                                     </Card>

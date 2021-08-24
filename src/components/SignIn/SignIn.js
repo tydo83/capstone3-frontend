@@ -57,15 +57,15 @@ function SignIn(props) {
     async function handleOnSubmit(e) {
         e.preventDefault()
         try {
-            // let result = await axios.post("api/users/login", {
-            //     userName: username,
-            //     password: password,
-            // })
-            // dev
-            let result = await axios.post("http://localhost:3001/users/login", {
+            let result = await axios.post("api/users/login", {
                 userName: username,
                 password: password,
             })
+            // dev
+            // let result = await axios.post("http://localhost:3001/users/login", {
+            //     userName: username,
+            //     password: password,
+            // })
             localStorage.setItem('jwtToken', result.data.jwtToken)
             let decodedJWTToken = jwtDecode(result.data.jwtToken)
             context.dispatch({ type: "SUCCESS_LOGGED_IN", user: decodedJWTToken.username})

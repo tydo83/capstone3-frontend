@@ -5,9 +5,13 @@ import { NavLink, Link } from "react-router-dom";
 import { createBrowserHistory } from 'history';
 import { AuthContext } from "../context/AuthContext";
 import "./Header.css";
-import { checkIsUserLoggedIn }from '../../lib/helpers'
+import { checkIsUserLoggedIn } from '../../lib/helpers'
 import jwtDecode from 'jwt-decode'
-import { blue } from "@material-ui/core/colors";
+
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+
 
 let history = createBrowserHistory();
 
@@ -27,11 +31,11 @@ function Header() {
     function logout() {
         localStorage.removeItem("jwtToken");
         context.dispatch({ type: "LOGGED_OUT" });
-        history.push("/login");        
+        history.push("/login");
     }
 
     useEffect(() => {
-        if(checkIsUserLoggedIn()) {
+        if (checkIsUserLoggedIn()) {
             let getJwtToken = localStorage.getItem('jwtToken');
             let decodedJWtToken = jwtDecode(getJwtToken);
             context.dispatch({ type: "SUCCESS_LOGGED_IN", user: decodedJWtToken.username });
@@ -39,7 +43,7 @@ function Header() {
             context.dispatch({ type: "LOGGED_OUT" });
         }
     }, [])
-    
+
     return (
         <div className={classes.root}>
             <AppBar className={classes.color} position="static">
@@ -57,9 +61,8 @@ function Header() {
                                 className="nav-link"
                                 activeClassName="active-nav-link"
                             >
-                            <Button color="inherit">{context.state.user}</Button>
+                                <Button color="inherit">{context.state.user}</Button>
                             </NavLink>
-                            <Button style={{color:"white"}}>Memo</Button>
                             <NavLink
                                 to="/login"
                                 exact
@@ -68,7 +71,7 @@ function Header() {
                             >
                                 <Button color="inherit" onClick={logout}>
                                     Logout
-                            </Button>
+                                </Button>
                             </NavLink>
                         </>
                     ) : (

@@ -23,10 +23,10 @@ export default function MemoCart(props) {
                     props.cart.map(e =>
                         <tr>
                             <th>{e.FoodName}</th>
-                            <th>{e.Calorie}</th>
-                            <th>{e.Carb}</th>
-                            <th>{e.Protein}</th>
-                            <th>{e.Fat}</th>
+                            <th>{Math.round(e.Calorie)}cal</th>
+                            <th>{Math.round(e.Carb)}g</th>
+                            <th>{Math.round(e.Protein)}g</th>
+                            <th>{Math.round(e.Fat)}g</th>
                             <th>{e.quantity}</th>
                             <td><button onClick={() => props.removeFromCart(e.FoodName)}>Remove</button></td>
                             <td>
@@ -44,16 +44,16 @@ export default function MemoCart(props) {
                 <tr>
                     <td><strong>Total</strong></td>
                     <td>
-                        {Math.round(props.totalCalorie)}
+                        {Math.round(props.totalCalorie)}cal
                     </td>
                     <td>
-                        {Math.round(props.totalCarb)}
+                        {Math.round(props.totalCarb)}g
                     </td>
                     <td>
-                        {Math.round(props.totalProtein)}
+                        {Math.round(props.totalProtein)}g
                     </td>
                     <td>
-                        {Math.round(props.totalFat)}
+                        {Math.round(props.totalFat)}g
                     </td>
                 </tr>
             </table>

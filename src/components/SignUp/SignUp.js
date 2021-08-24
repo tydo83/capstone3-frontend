@@ -53,21 +53,21 @@ function Signup(props) {
         e.preventDefault();
         console.log(firstName, lastName, email, username, password);
         try {
-            // let result = await axios.post("api/users/sign-up", {
-            //     firstName,
-            //     lastName,
-            //     email,
-            //     userName: username,
-            //     password,
-            // })
-            // not yet deployed
-            let result = await axios.post("http://localhost:3001/users/sign-up", {
+            let result = await axios.post("api/users/sign-up", {
                 firstName,
                 lastName,
                 email,
                 userName: username,
                 password,
             })
+            // not yet deployed
+            // let result = await axios.post("http://localhost:3001/users/sign-up", {
+            //     firstName,
+            //     lastName,
+            //     email,
+            //     userName: username,
+            //     password,
+            // })
             toast.success("Yas!!! you can log in now", {
                 position: "top-right",
                 autoClose: 5000,
