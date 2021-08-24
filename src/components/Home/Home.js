@@ -113,7 +113,7 @@ const cartReducer = (state, action) => {
 export default function Album() {
     const classes = useStyles();
 
-    const [inputState, setInputState] = useState(null)
+    const [inputState, setInputState] = useState("")
     const [searchResult, setSearchResult] = useState(null)
 
     const [cartState, cartDispatch] = useReducer(cartReducer, [])
@@ -146,7 +146,7 @@ export default function Album() {
     }
 
     const resetHandler = () => {
-        setInputState(null)
+        setInputState("")
         setSearchResult(null)
         cartDispatch({
             type: "RESET",        
